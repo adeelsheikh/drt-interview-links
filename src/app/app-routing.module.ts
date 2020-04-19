@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { WelcomeComponent } from './welcome/welcome.component';
+import { redirectUnauthorizedTo } from '@angular/fire/auth-guard';
+import { RouterModule, Routes } from '@angular/router';
+
 import { AboutComponent } from './about/about.component';
-import { redirectUnauthorizedTo, canActivate } from '@angular/fire/auth-guard';
+import { CourseListComponent } from './course-list/course-list.component';
+import { WelcomeComponent } from './welcome/welcome.component';
 
 
 const redirectUnauthorizedToLanding = redirectUnauthorizedTo(['login']);
@@ -10,12 +12,8 @@ const redirectUnauthorizedToLanding = redirectUnauthorizedTo(['login']);
 const routes: Routes = [
   { path: "", redirectTo: "/welcome", pathMatch: "full" },
   { path: "welcome", component: WelcomeComponent },
-
-  {
-    path: "about", component: AboutComponent
-  },
-
-
+  { path: "courses", component: CourseListComponent },
+  { path: "about", component: AboutComponent }
 ];
 
 @NgModule({
